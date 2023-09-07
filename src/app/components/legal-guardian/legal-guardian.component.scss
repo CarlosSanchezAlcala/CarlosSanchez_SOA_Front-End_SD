@@ -30,6 +30,18 @@
   margin-top: 30px;
   display: flex;
   justify-content: center;
+  text-align: center;
+}
+
+.RowAndColumn {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.buttonLegalGuardian {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 #buttonNewTutor {
@@ -43,14 +55,6 @@
 .tableDataSheet {
   margin-left: 2%;
   margin-right: 2%;
-}
-
-td {
-  vertical-align: middle;
-}
-
-tr {
-  vertical-align: middle;
 }
 
 #carouselExampleCaptions {

@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand">Servicio de Orientación al Adolescente</a>
+    <a class="navbar-brand">
+      <img ngSrc="/assets/SOA-CAÑETE.png" alt="SoaCañete" width="40" height="34"
+           class="d-inline-block align-text-top">
+      Servicio de Orientación al Adolescente
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,13 +18,12 @@
       <form class="d-flex" role="search">
         <input [(ngModel)]="searchDNI" name="searchDNI" maxlength="8" class="form-control me-2" type="search"
                (input)="searchByDniInactive()" placeholder="Buscar persona..." aria-label="Search">
-        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
       </form>
     </div>
   </div>
 </nav>
 
-<div class="titleWeb" align="center">
+<div class="titleWeb">
   <figure>
     <p style="font-size: 55px" class="lead">
       Listado de Tutores Legales
@@ -33,7 +36,7 @@
   </figure>
 </div>
 
-<div align="center">
+<div class="buttonLegalGuardian">
   <button id="buttonActiveTutor" class="btn btn-success" (click)="navigateFormActive()">Tutores
     Legales Activos
   </button>
@@ -46,7 +49,7 @@
 <div class="tableDataSheet">
   <table class="table table-sm table-striped row-border hover">
     <thead class="table-light">
-    <tr align="center">
+    <tr class="RowAndColumn">
       <th style="width: 200px" scope="col">Nombres:</th>
       <th scope="col">Apellido Paterno:</th>
       <th scope="col">Apellido Materno:</th>
@@ -59,7 +62,7 @@
     </tr>
     </thead>
     <tbody class="table-group-divider">
-    <tr align="center" *ngFor="let legalGuardian of ( searchResults.length > 0 ? searchResults : legalGuardians)">
+    <tr class="RowAndColumn" *ngFor="let legalGuardian of ( searchResults.length > 0 ? searchResults : legalGuardians)">
       <td>{{legalGuardian.name}}</td>
       <td>{{legalGuardian.father_last_name}}</td>
       <td>{{legalGuardian.mother_last_name}}</td>

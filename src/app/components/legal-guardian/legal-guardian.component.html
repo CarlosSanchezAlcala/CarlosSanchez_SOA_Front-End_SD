@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand">
-      <img ngSrc="/assets/SOA-CAÑETE.png" alt="SoaCañete" width="30" height="24"
+      <img ngSrc="/assets/SOA-CAÑETE.png" alt="SoaCañete" width="40" height="34"
            class="d-inline-block align-text-top">
       Servicio de Orientación al Adolescente
     </a>
@@ -23,7 +23,7 @@
   </div>
 </nav>
 
-<div class="titleWeb" align="center">
+<div class="titleWeb">
   <figure>
     <p style="font-size: 55px" class="lead">
       Listado de Tutores Legales
@@ -36,7 +36,7 @@
   </figure>
 </div>
 
-<div align="center">
+<div class="buttonLegalGuardian">
   <button id="buttonNewTutor" class="btn btn-success" (click)="navigateForm()">
     Agregar Tutor Legal
   </button>
@@ -53,7 +53,7 @@
 <div class="tableDataSheet">
   <table class="table table-sm table-striped row-border hover">
     <thead class="table-light">
-    <tr align="center">
+    <tr class="RowAndColumn">
       <th style="width: 200px" scope="col">Nombres:</th>
       <th scope="col">Apellido Paterno:</th>
       <th scope="col">Apellido Materno:</th>
@@ -66,7 +66,7 @@
     </tr>
     </thead>
     <tbody class="table-group-divider">
-    <tr align="center" *ngFor="let legalGuardian of ( searchResults.length > 0 ? searchResults : legalGuardians)">
+    <tr class="RowAndColumn" *ngFor="let legalGuardian of ( searchResults.length > 0 ? searchResults : legalGuardians)">
       <td>{{legalGuardian.name}}</td>
       <td>{{legalGuardian.father_last_name}}</td>
       <td>{{legalGuardian.mother_last_name}}</td>
