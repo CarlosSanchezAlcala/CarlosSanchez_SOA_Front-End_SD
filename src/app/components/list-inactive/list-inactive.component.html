@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Servicio de Orientación al Adolescente</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="legal-guardian">Tutores Legales</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input [(ngModel)]="searchDNI" name="searchDNI" maxlength="8" class="form-control me-2" type="search"
+               (input)="searchByDniInactive()" placeholder="Buscar persona..." aria-label="Search">
+        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="titleWeb" align="center">
+  <figure>
+    <p style="font-size: 55px" class="lead">
+      Listado de Tutores Legales
+    </p>
+    <figcaption class="blockquote-footer">
+      Información completa sobre el personal que se va a encargar de velar por
+      el avance y desarrollo del Adolescente
+      <strong><cite title="Source Title">, en este caso, estos tutores legales, están desactivados.</cite></strong>
+    </figcaption>
+  </figure>
+</div>
+
+<div align="center">
+  <button id="buttonActiveTutor" class="btn btn-success" (click)="navigateFormActive()">Tutores
+    Legales Activos
+  </button>
+</div>
+
+<div class="styleCharge">
+  <div *ngIf="isSearchingInactive" class="loader"></div>
+</div>
+
+<div class="tableDataSheet">
+  <table class="table table-sm table-striped row-border hover">
+    <thead class="table-light">
+    <tr align="center">
+      <th style="width: 200px" scope="col">Nombres:</th>
+      <th scope="col">Apellido Paterno:</th>
+      <th scope="col">Apellido Materno:</th>
+      <th scope="col">Tipo de Documento:</th>
+      <th scope="col">Número de Documento:</th>
+      <th style="width: 400px" scope="col">Dirección:</th>
+      <th style="width: 15px" scope="col">Celular:</th>
+      <th style="width: 400px" scope="col">Correo Electronico:</th>
+      <th style="width: 221px" scope="col">Acciones:</th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <tr align="center" *ngFor="let legalGuardian of ( searchResults.length > 0 ? searchResults : legalGuardians)">
+      <td>{{legalGuardian.name}}</td>
+      <td>{{legalGuardian.father_last_name}}</td>
+      <td>{{legalGuardian.mother_last_name}}</td>
+      <td>{{legalGuardian.documentType}}</td>
+      <td>{{legalGuardian.documentNumber}}</td>
+      <td>{{legalGuardian.address}}</td>
+      <td>{{legalGuardian.cell_phone}}</td>
+      <td>{{legalGuardian.email}}</td>
+      <td>
+        <button class="btn btn-warning" style="margin: 2px" (click)="editLegalGuardian(legalGuardian)" disabled>
+          Modificar
+        </button>
+        <button class="btn btn-danger" style="margin: 2px" (click)="reactivatesLogicalLegalGuardian(legalGuardian)">
+          Reactivar
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

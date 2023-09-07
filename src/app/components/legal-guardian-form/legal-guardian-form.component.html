@@ -1,0 +1,83 @@
+<form id="formDataSave" [formGroup]="legalGuardianForm" (ngSubmit)="saveLegalGuardian()" class="py-4">
+
+  <div class="titleWeb" align="center">
+    <figure>
+      <p style="font-size: 55px" class="lead">
+        {{legalGuardianServices.legalGuardianSelected ? 'Editar datos del Tutor Legal' : 'Nuevo Tutor Legal'}}
+      </p>
+      <figcaption class="blockquote-footer">
+        Por favor colocar toda la información que se pide a continuación,
+        con la información
+        <strong><cite title="Source Title">correcta</cite></strong>
+        y
+        <strong><cite title="Source Title">veridica.</cite></strong>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Formulario - Nombre -->
+  <div class="form-floating mb-3">
+    <input type="text" formControlName="name" class="form-control" id="nombreTutorLegal"
+           placeholder="Digite su nombre completo">
+    <label for="nombreTutorLegal">Nombres:</label>
+  </div>
+
+  <!-- Formulario - Apellido Paterno -->
+  <div class="form-floating mb-3">
+    <input type="text" formControlName="father_last_name" class="form-control" id="apellidoPaternoTutorLegal"
+           placeholder="Digite solo el apellido paterno">
+    <label for="apellidoPaternoTutorLegal">Apellido Paterno:</label>
+  </div>
+
+  <!-- Formulario - Apellido Materno -->
+  <div class="form-floating mb-3">
+    <input type="text" formControlName="mother_last_name" class="form-control" id="apellidoMaternoTutorLegal"
+           placeholder="Digite solo el apellido materno">
+    <label for="apellidoMaternoTutorLegal">Apellido Materno:</label>
+  </div>
+
+  <!-- Formulario - Tipo de Documento de Identificación -->
+  <div class="form-floating mb-3">
+    <input type="text" formControlName="documentType" class="form-control" id="tipoDeDocumentoTutorLegal"
+           placeholder="Digite su tipo de documento de identificación">
+    <label for="tipoDeDocumentoTutorLegal">Tipo de Documento:</label>
+  </div>
+
+  <!-- Formulario - Número de Documento -->
+  <div class="form-floating mb-3">
+    <input type="text" formControlName="documentNumber" maxlength="9" minlength="9" class="form-control"
+           id="númeroDeDocumentoTutorLegal"
+           placeholder="Digite el número de identificación">
+    <label for="númeroDeDocumentoTutorLegal">Número de Documento:</label>
+  </div>
+
+  <!-- Formulario - Dirección -->
+  <div class="form-floating mb-3">
+    <input type="text" formControlName="address" class="form-control" id="direcciónTutorLegal"
+           placeholder="Digite la dirección de su domicilio">
+    <label for="direcciónTutorLegal">Dirección:</label>
+  </div>
+
+  <!-- Formulario - Número de Celular -->
+  <div class="form-floating mb-3">
+    <input type="text" formControlName="cell_phone" maxlength="9" minlength="9" class="form-control"
+           id="númeroDeCelularTutorLegal"
+           placeholder="Digite el número de celular/teléfono">
+    <label for="númeroDeCelularTutorLegal">Número de Celular/Teléfono:</label>
+  </div>
+
+  <!-- Formulario - Correo Electrónico -->
+  <div class="form-floating mb-3">
+    <input type="text" formControlName="email" class="form-control" id="correoElectrónicoTutorLegal"
+           placeholder="Digite su correo electrónico">
+    <label for="correoElectrónicoTutorLegal">Correo Electrónico:</label>
+  </div>
+
+  <div align="center">
+    <button style="margin-right: 5px" class="btn btn-light mr-2" type="button" (click)="navigateLegalGuardian()">
+      Cancelar
+    </button>
+    <button style="margin-left: 5px" class="btn btn-success"
+            type="submit">{{legalGuardianServices.legalGuardianSelected ? 'Modificar' : 'Registrar'}}</button>
+  </div>
+</form>
