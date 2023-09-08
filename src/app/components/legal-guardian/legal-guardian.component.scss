@@ -1,6 +1,7 @@
 /* Importaciones de Fuentes de Letras */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
 .loader {
   border: 16px solid #f3f3f3; /* Color del borde exterior */
@@ -59,4 +60,11 @@
 
 #carouselExampleCaptions {
   width: 25%;
+}
+
+.navbar-brand {
+  font-family: 'Sacramento', cursive;
+  font-size: 1.9em;
+  background-color: #E4F1FF;
+  border-radius: 1em;
 }

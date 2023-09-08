@@ -38,9 +38,12 @@
 
   <!-- Formulario - Tipo de Documento de Identificación -->
   <div class="form-floating mb-3">
-    <input type="text" formControlName="documentType" class="form-control" id="tipoDeDocumentoTutorLegal"
-           placeholder="Digite su tipo de documento de identificación">
-    <label for="tipoDeDocumentoTutorLegal">Tipo de Documento:</label>
+    <select class="form-select form-control" id="tipoDocumento" formControlName="documentType" aria-label="Default select example">
+      <option selected></option>
+      <option value="DNI">DNI</option>
+      <option value="Carnet Extranjería">Carnet Extranjería</option>
+    </select>
+    <label for="tipoDocumento">Número de Documento:</label>
   </div>
 
   <!-- Formulario - Número de Documento -->

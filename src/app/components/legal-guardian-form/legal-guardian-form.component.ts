@@ -22,7 +22,7 @@ export class LegalGuardianFormComponent implements OnInit, OnDestroy {
   }
 
   navigateLegalGuardian() {
-    this.router.navigate(['legal-guardian'])
+    this.router.navigate(['legal-guardian']);
   }
 
   initLegalGuardianForm() {
