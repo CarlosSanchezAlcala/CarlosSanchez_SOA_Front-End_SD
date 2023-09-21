@@ -36,6 +36,7 @@ export class LegalGuardianFormComponent implements OnInit, OnDestroy {
       address: [''],
       cell_phone: [''],
       email: [''],
+      active: ['']
     });
     if (this.legalGuardianServices.legalGuardianSelected) {
       this.legalGuardianForm.patchValue(this.legalGuardianServices.legalGuardianSelected);
