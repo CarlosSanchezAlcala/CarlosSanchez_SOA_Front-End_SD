@@ -9,13 +9,15 @@ import { LegalGuardianFormComponent } from './components/legal-guardian-form/leg
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ListInactiveComponent } from './components/list-inactive/list-inactive.component';
 import {NgOptimizedImage} from "@angular/common";
+import { TransactionDataComponent } from './components/transaction-data/transaction-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LegalGuardianComponent,
     LegalGuardianFormComponent,
-    ListInactiveComponent
+    ListInactiveComponent,
+    TransactionDataComponent,
   ],
   imports: [
     BrowserModule,
