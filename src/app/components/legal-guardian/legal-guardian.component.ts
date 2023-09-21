@@ -45,6 +45,10 @@ export class LegalGuardianComponent implements OnInit {
     this.router.navigate(["list-inactive"]);
   }
 
+  navigateTransactional() {
+    this.router.navigate(["transaction-data"])
+  }
+
   editLegalGuardian(legalGuardian: LegalGuardianModel) {
     this.legalGuardianService.legalGuardianSelected = legalGuardian;
     this.navigateForm()

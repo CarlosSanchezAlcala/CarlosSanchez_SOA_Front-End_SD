@@ -31,11 +31,7 @@ export class TransactionDataComponent implements OnInit {
     }
 
     navigateForm() {
-        this.router.navigate(['legal-guardian-form'])
-    }
-
-    navigateFormInactive() {
-        this.router.navigate(["list-inactive"]);
+        this.router.navigate(['legal-guardian'])
     }
 
     searchByDni() {
