@@ -1,85 +1,124 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand">
-            <img ngSrc="/assets/SOA-CAÑETE.png" alt="SoaCañete" width="40" height="34"
-                 class="d-inline-block align-text-top">
-            Servicio de Orientación al Adolescente
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" id="titleLegalGuardian" aria-current="page" routerLink="legal-guardian">Tutores
-                        Legales</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input [(ngModel)]="searchDNI" name="searchDNI" maxlength="8" class="form-control me-2" type="search"
-                       (input)="searchByDni()" placeholder="Buscar persona..." aria-label="Search">
-            </form>
-        </div>
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <img ngSrc="/assets/SOA-CAÑETE.png" alt="SoaCañete" width="40" height="34"
+           class="d-inline-block align-text-top">
+      Servicio de Orientación al Adolescente
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" id="titleLegalGuardian" aria-current="page" routerLink="legal-guardian">Tutores
+            Legales</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input [(ngModel)]="searchDNI" name="searchDNI" maxlength="8" class="form-control me-2" type="search"
+               (input)="searchByDni()" placeholder="Buscar persona..." aria-label="Search">
+      </form>
     </div>
+  </div>
 </nav>
 
 <div class="titleWeb">
-    <figure>
-        <p style="font-size: 55px" class="lead">
-            Listado de las asignaciones
-        </p>
-        <figcaption class="blockquote-footer">
-            Información completa sobre el personal que se va a encargar de velar por
-            el avance y desarrollo del
-            <strong><cite title="Source Title">Adolescente.</cite></strong>
-        </figcaption>
-    </figure>
+  <figure>
+    <p style="font-size: 55px" class="lead">
+      Listado de las asignaciones
+    </p>
+    <figcaption class="blockquote-footer">
+      Información completa sobre el personal que se va a encargar de velar por
+      el avance y desarrollo del
+      <strong><cite title="Source Title">Adolescente.</cite></strong>
+    </figcaption>
+  </figure>
 </div>
 
 <div class="buttonLegalGuardian">
-    <button id="buttonNewTutor" class="btn btn-success" (click)="navigateForm()">
-        Tutores Legales
-    </button>
+  <button id="buttonNewTutor" class="btn btn-success" (click)="navigateForm()">
+    Tutores Legales
+  </button>
 </div>
 
+<!-- Formulario de Registro -->
+
+<div style="margin: 10px 10px 10px 10px">
+  <form [formGroup]="dataFuncionaryForm" (ngSubmit)="secondWayRegister()">
+    <div class="form-floating mb-3">
+      <input type="text" formControlName="description" class="form-control" id="nombreTutorLegal"
+             placeholder="Digite su nombre completo" >
+      <label for="nombreTutorLegal">Nombres:</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <label>Tutor Legal</label>
+      <br>
+      <select formControlName="idLegalGuardian" class="form-control">
+        <option *ngFor="let tutor of legalGuardianDataExtract" [value]="tutor.id">
+          {{tutor.name}} {{tutor.father_last_name}} {{tutor.mother_last_name}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-floating mb-3">
+      <label>Tutor Legal</label>
+      <br>
+      <div formArrayName="idAdolescent" *ngFor="let adol of dataAdolescentComplete; let i = index" class="form-check">
+        <input type="checkbox" class="form-check-input" id="{{adol.id}}" formControlName="{{i}}" [value]="adol.id">
+        <label class="form-check-label" for="{{adol.id}}">
+          {{adol.name}} {{adol.father_last_name}} {{adol.mother_last_name}}
+        </label>
+      </div>
+    </div>
+
+    <div class="buttonCancelarLegalGuardian">
+      <button style="margin-left: 5px" class="btn btn-success"
+              type="submit">
+        Registrar nuevo dato
+      </button>
+    </div>
+  </form>
+</div>
 
 <div class="styleCharge">
-    <div *ngIf="isSearching" class="loader"></div>
+  <div *ngIf="isSearching" class="loader"></div>
 </div>
 
 <div class="tableDataSheet">
-    <table class="table table-sm table-striped row-border hover">
-        <thead class="table-light">
-        <tr class="RowAndColumn">
-            <th scope="col">Tutor Legal:</th>
-            <th scope="col">Número de DNI (Tutor Legal):</th>
-            <th scope="col">Adolescente:</th>
-            <th scope="col">Número de DNI (Adolescente):</th>
-            <th scope="col">Descripción de la Asignación:</th>
-        </tr>
-        </thead>
-        <tbody class="table-group-divider">
-        <tr class="RowAndColumn" *ngFor="let dataTransaccional of familyData">
-            <td>
-                {{dataTransaccional.legalGuardianResponseDto.name}}
-                {{dataTransaccional.legalGuardianResponseDto.father_last_name}}
-                {{dataTransaccional.legalGuardianResponseDto.mother_last_name}}
-            </td>
-            <td>
-                {{dataTransaccional.legalGuardianResponseDto.documentNumber}}
-            </td>
-            <td>
-                {{dataTransaccional.adolescentResponseDto.name}}
-                {{dataTransaccional.adolescentResponseDto.father_last_name}}
-                {{dataTransaccional.adolescentResponseDto.mother_last_name}}
-            </td>
-            <td>
-                {{dataTransaccional.adolescentResponseDto.documentNumber}}
-            </td>
-            <td>
-                {{dataTransaccional.family.description}}
-            </td>
-        </tr>
-    </table>
+  <table class="table table-sm table-striped row-border hover">
+    <thead class="table-light">
+    <tr class="RowAndColumn">
+      <th scope="col">Tutor Legal:</th>
+      <th scope="col">Número de DNI (Tutor Legal):</th>
+      <th scope="col">Adolescente:</th>
+      <th scope="col">Número de DNI (Adolescente):</th>
+      <th scope="col">Descripción de la Asignación:</th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <tr class="RowAndColumn" *ngFor="let dataTransaccional of familyData">
+      <td>
+        {{dataTransaccional.legalGuardianResponseDto.name}}
+        {{dataTransaccional.legalGuardianResponseDto.father_last_name}}
+        {{dataTransaccional.legalGuardianResponseDto.mother_last_name}}
+      </td>
+      <td>
+        {{dataTransaccional.legalGuardianResponseDto.documentNumber}}
+      </td>
+      <td>
+        {{dataTransaccional.adolescentResponseDto.name}}
+        {{dataTransaccional.adolescentResponseDto.father_last_name}}
+        {{dataTransaccional.adolescentResponseDto.mother_last_name}}
+      </td>
+      <td>
+        {{dataTransaccional.adolescentResponseDto.documentNumber}}
+      </td>
+      <td>
+        {{dataTransaccional.family.description}}
+      </td>
+    </tr>
+  </table>
 </div>
